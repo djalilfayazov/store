@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Online Shoppping | All Products</title>
+
+	<script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+</head>
+<body>
+	{% include 'style.html' %}
+	{% include 'header.html' %}
+	
+
+	<div id="items">
+	{% for item in items %}
+		
+		<div id="item" class="flex justify-center">
+		  <div class="rounded-lg shadow-lg bg-white w-96">
+		    <img class="rounded-t-lg" src="{{item.item_img}}" alt=""/>
+		    <div class="p-6">
+		      <h5 id="item-title" class="text-gray-900 text-xl font-medium mb-2">{{item.item_title}}</h5>
+		      <a id="show-item" href="item-{{item.id}}/" type="button" class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Show more</a>
+		    </div>
+		  </div>
+		</div>
+		
+
+	{% endfor %}
+	</div>
+
+
+
+	{% include 'footer.html' %}
+
+</body>
+</html>
+

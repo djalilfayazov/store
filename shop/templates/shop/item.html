@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Online Shoppping | {{item.item_title}}</title>
+
+	<script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+</head>
+<body>
+	{% include 'style.html' %}
+	{% include 'header.html' %}
+	
+
+	<div id="items" class="flex justify-center">	
+		
+		<div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+		    <img class="p-8 rounded-t-lg" src="{{item.item_img}}" alt="product image" />
+		    <div class="px-5 pb-5">
+		        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{{item.item_title}}</h5>
+		        <p class="text-gray-700 text-base mb-4">{{item.item_body|safe}}</p>
+
+		        {% if item.isdigital %}
+		        	<p class="text-gray-700 text-base mb-4" id="date">Added to the store: {{item.item_date}}</p>
+		        	<p id="isdigit">Available in stock</p>
+		        {% else %}
+		        	<p class="text-gray-700 text-base mb-4" id="date">Added to the store: {{item.item_date}}</p>
+		        	<p id="notdigit">Out of stock</p>
+		        {% endif %}		        
+		        <div id="pc" class="flex items-center justify-between">
+		            <span class="text-3xl font-bold text-gray-900 dark:text-white">${{item.item_price}}</span>
+		            {% if item.isdigital %}
+		            	<a class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
+		            {% else %}
+		            	<button id="disable" class="ont-medium rounded-lg text-sm px-5 py-2.5 text-center">Cant't add to cart</button>
+		            {% endif %}
+		        </div>
+		    </div>
+		</div>
+
+	</div>
+
+
+
+	{% include 'footer.html' %}
+
+</body>
+</html>
+
